@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotional Journal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: #FFD9E6;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .main-container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h2 {
+            color: #FF69B4;
+            font-family: 'Dancing Script', cursive;
+        }
+        textarea, select, input {
+            border: 2px solid #FFB6C1;
+            background: #FFF0F5;
+            border-radius: 10px;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            background: #FF69B4;
+            border: none;
+            padding: 10px 20px;
+            color: white;
+            font-size: 18px;
+            border-radius: 5px;
+            transition: transform 0.2s;
+            margin: 5px;
+        }
+        button:hover {
+            background: #FF1493;
+            transform: scale(1.1);
+        }
+        
+        /* New Navigation Styles */
+        .top-nav {
+            background-color: #7B68EE; /* Purple color from the image */
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-item {
+            margin: 0 20px;
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover {
+            transform: translateY(-2px);
+            color: #f0f0f0;
+        }
+        .nav-item i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        .profile-button {
+            background-color: white;
+            color: #7B68EE;
+            border-radius: 50px;
+            padding: 8px 25px;
+            font-weight: 600;
+            margin-left: 15px;
+            transition: all 0.3s ease;
+        }
+        .profile-button:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        .light-blue-bar {
+            height: 60px;
+            background-color: #E6F3FF; /* Light blue color from image */
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- New Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="journal.html" class="nav-item">
+                <i class="fas fa-book"></i> Journal
+            </a>
+            <a href="recommendations.html" class="nav-item">
+                <i class="fas fa-lightbulb"></i> Recommendations
+            </a>
+            <a href="insights.html" class="nav-item">
+                <i class="fas fa-chart-line"></i> Insights
+            </a>
+            <a href="about.html" class="nav-item">
+                <i class="fas fa-info-circle"></i> About
+            </a>
+            <a href="profile.html" class="nav-item profile-button">
+                <i class="fas fa-user"></i> Profile
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Light blue bar -->
+    <div class="light-blue-bar"></div>
+
+    <div class="main-container">
+        <h2>How Are You Feeling Today? 😊</h2>
+        <select id="moodSelect">
+            <option value="happy">😊 Happy</option>
+            <option value="sad">😢 Sad</option>
+            <option value="angry">😡 Angry</option>
+            <option value="love">😍 In Love</option>
+            <option value="confused">😕 Confused</option>
+        </select>
+        <h2>Write Your Journal Entry 📝</h2>
+        <textarea id="journalEntry" rows="5" placeholder="Write your thoughts..."></textarea>
+        <h2>Upload Images or Voice Notes 🎤📷</h2>
+        <input type="file" id="fileUpload">
+        <br><br>
+        <button onclick="saveEntry()">Save Entry</button>
+        <button onclick="redirectToSentiment()">View Sentiment Results</button>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        function saveEntry() {
+            const mood = document.getElementById("moodSelect").value;
+            const entryText = document.getElementById("journalEntry").value;
+            const entryDate = new Date().toLocaleString();
+            if (!entryText.trim()) {
+                alert("Please write something in your journal.");
+                return;
+            }
+            localStorage.setItem("savedMood", mood);
+            localStorage.setItem("savedEntry", entryText);
+            localStorage.setItem("savedDate", entryDate);
+            window.location.href = "entry_saved.html"; // Redirect to entry saved page
+        }
+        function redirectToSentiment() {
+            window.location.href = "sentiment_results.html"; // Redirect to sentiment results page
+        }
+    </script>
+</body>
+</html>

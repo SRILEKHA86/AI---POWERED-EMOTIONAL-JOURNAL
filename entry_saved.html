@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entry Saved</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/confetti-js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            transition: background 1s ease-in-out;
+        }
+        .entry-container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
+            margin-top: 50px;
+        }
+        .quote-box {
+            background: #FFE4E1;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-family: 'Dancing Script', cursive;
+            font-size: 22px;
+            font-weight: bold;
+            color: #FF1493;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .quote-author {
+            font-size: 18px;
+            margin-top: 10px;
+            font-weight: 500;
+            color: #8B0000;
+        }
+    </style>
+</head>
+<body id="entryBody">
+    <div class="container">
+        <div class="entry-container">
+            <h2 style="color: #FF1493;">Your Entry Has Been Saved! 🎉</h2>
+            <p id="entryDate"></p>
+            <p><strong>Mood:</strong> <span id="moodText">😊</span></p>
+            <p id="entryText">"Your saved journal entry will appear here."</p>
+
+            <div class="quote-box">
+                <p id="quoteOfTheDay">"Every day is a fresh start."</p>
+                <p class="quote-author" id="quoteAuthor">- Unknown</p>
+            </div>
+
+            <button class="btn btn-primary mt-3" onclick="window.location.href='index.html'">Write Another Entry</button>
+        </div>
+    </div>
+    <canvas id="confetti-canvas"></canvas>
+    
+    <script>
+        document.getElementById("entryDate").innerText = "Saved on: " + new Date().toLocaleString();
+
+        const moodEmojis = {
+            happy: "😊",
+            sad: "😢",
+            angry: "😡",
+            love: "😍",
+            confused: "😕"
+        };
+
+        const moodThemes = {
+            happy: '#FFDAB9',
+            sad: '#B0E0E6',
+            angry: '#FFA07A',
+            love: '#FFB6C1',
+            confused: '#DDA0DD'
+        };
+
+        const selectedMood = localStorage.getItem("savedMood") || "happy";
+        const savedEntry = localStorage.getItem("savedEntry") || "Your saved journal entry will appear here.";
+        
+        document.getElementById("entryBody").style.background = moodThemes[selectedMood];
+        document.getElementById("moodText").innerText = moodEmojis[selectedMood];
+        document.getElementById("entryText").innerText = savedEntry;
+
+        const quotes = [
+            { text: "Happiness depends upon ourselves.", author: "Aristotle" },
+            { text: "You are enough just as you are.", author: "Meghan Markle" },
+            { text: "Your only limit is your mind.", author: "Unknown" },
+            { text: "Dream big and dare to fail.", author: "Norman Vaughan" },
+            { text: "Start where you are. Use what you have. Do what you can.", author: "Arthur Ashe" }
+        ];
+        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+        document.getElementById("quoteOfTheDay").innerText = `"${randomQuote.text}"`;
+        document.getElementById("quoteAuthor").innerText = `- ${randomQuote.author}`;
+
+        const confettiSettings = { target: 'confetti-canvas' };
+        const confetti = new ConfettiGenerator(confettiSettings);
+        confetti.render();
+    </script>
+</body>
+</html>
