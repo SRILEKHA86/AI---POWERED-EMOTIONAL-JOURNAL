@@ -1,5 +1,7 @@
 🌟 **AI-Powered Emotional Journal**
+
 Track your emotions, gain insights, and improve your mental well-being!
+
 📌 About the Project
 The AI-Powered Emotional Journal is a web-based platform that allows users to log their emotions, analyze their mood trends, and receive personalized recommendations for better mental well-being.
 
@@ -10,10 +12,15 @@ Bootstrap – Enhancing responsiveness and layout
 
 🎨 Features
 1.Emotion Logging – Users can select and save their emotions
+
 2.Sentiment Analysis – AI-powered emotional insights
+
 3.Personalized Recommendations – Tailored suggestions based on mood history
+
 4.User-Friendly UI – Simple and intuitive design
+
 5.Mobile Responsive – Works seamlessly on all devices
+
 
 🚀 Getting Started
 
