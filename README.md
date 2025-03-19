@@ -7,12 +7,13 @@ The AI-Powered Emotional Journal is a web-based platform that allows users to lo
 HTML – Structuring the web pages
 CSS – Styling for a modern and elegant UI
 Bootstrap – Enhancing responsiveness and layout
+
 🎨 Features
-✅ Emotion Logging – Users can select and save their emotions
-✅ Sentiment Analysis – AI-powered emotional insights
-✅ Personalized Recommendations – Tailored suggestions based on mood history
-✅ User-Friendly UI – Simple and intuitive design
-✅ Mobile Responsive – Works seamlessly on all devices
+1.Emotion Logging – Users can select and save their emotions
+2.Sentiment Analysis – AI-powered emotional insights
+3.Personalized Recommendations – Tailored suggestions based on mood history
+4.User-Friendly UI – Simple and intuitive design
+5.Mobile Responsive – Works seamlessly on all devices
 
 🚀 Getting Started
 
