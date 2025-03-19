@@ -11,6 +11,7 @@ CSS – Styling for a modern and elegant UI
 Bootstrap – Enhancing responsiveness and layout
 
 🎨 Features
+
 1.Emotion Logging – Users can select and save their emotions
 
 2.Sentiment Analysis – AI-powered emotional insights
@@ -26,12 +27,15 @@ Bootstrap – Enhancing responsiveness and layout
 
 1️⃣ Clone the Repository
 git clone https://github.com/SRILEKHA86/AI---POWERED-EMOTIONAL-JOURNAL.git
+
 cd AI---POWERED-EMOTIONAL-JOURNAL
 
 2️⃣ Open the Project
+
 Open index.html in a browser or use Live Server in VS Code for a better experience.
 
 3️⃣ Customize & Deploy
+
 Modify styles, enhance functionality, or deploy it using GitHub Pages, Netlify, or Vercel.
 
 📂 Project Structure
@@ -43,16 +47,24 @@ Modify styles, enhance functionality, or deploy it using GitHub Pages, Netlify, 
  ├── index.html                 # Homepage with main features  
  ├── sentiment_results.html     # Sentiment analysis results  
  ├── README.md                  # Project documentation (this file)  
+ 
 🎯 Future Enhancements
+
 🔹 Integrate AI-based sentiment analysis for deeper insights
+
 🔹 Add user authentication & profiles
+
 🔹 Implement mood history dashboard for tracking trends
+
 🔹 Enable data visualization for emotion tracking
 
+
 💙 Contributing
+
 We welcome contributions! Feel free to fork the repo, make improvements, and submit a pull request.
 
 📜 License
+
 This project is open-source under the License.
 
 🚀 Happy Journaling! 🚀
