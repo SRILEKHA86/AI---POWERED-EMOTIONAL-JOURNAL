@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & Contact | EmotionAI Journal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #FFB6C1;
+            --secondary-color: #7c4dff;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        
+        .navbar {
+            background-color: var(--primary-color);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        .banner {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            padding: 80px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .about-section {
+            padding: 60px 0;
+        }
+        
+        .about-card {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .about-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(108, 99, 255, 0.2);
+        }
+        
+        .about-card img {
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .about-card-body {
+            padding: 25px;
+        }
+        
+        .contact-info {
+            padding: 60px 0;
+            background-color: var(--light-color);
+        }
+        
+        .contact-card {
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .contact-form {
+            padding: 60px 0;
+        }
+        
+        .form-control {
+            border-radius: 10px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border: none;
+            padding: 12px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--secondary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 30px 0;
+        }
+        
+        .social-links a {
+            color: white;
+            margin-right: 15px;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">EmotionAI Journal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:5500/home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="http://127.0.0.1:5500/aboutus.html#">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:5500/Recommendation.html">AI Recommendations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Banner -->
+    <section class="banner">
+        <div class="container">
+            <h1 class="display-4 fw-bold">About EmotionAI Journal</h1>
+            <p class="lead">Empowering Your Emotional Well-being with AI</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 mb-4">
+                    <div class="about-card">
+                        <img src="/api/placeholder/800/400" alt="AI Journal" class="img-fluid w-100">
+                        <div class="about-card-body">
+                            <h3>Our Mission</h3>
+                            <p>At EmotionAI Journal, we believe that emotional intelligence is the key to a balanced and fulfilling life. Our mission is to provide an innovative platform that combines the power of artificial intelligence with psychological insights to help you understand and manage your emotions more effectively.</p>
+                            <p>We're committed to creating a safe, private space where you can express yourself freely and receive personalized insights to enhance your mental well-being.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-4">
+                    <div class="about-card">
+                        <img src="/api/placeholder/800/400" alt="AI Technology" class="img-fluid w-100">
+                        <div class="about-card-body">
+                            <h3>Our Technology</h3>
+                            <p>Discover how AI-driven journaling helps you track emotions, gain insights, and enhance mental well-being. Our platform utilizes advanced natural language processing to analyze your journal entries, identify emotional patterns, and provide personalized recommendations.</p>
+                            <p>With EmotionAI Journal, you'll gain a deeper understanding of your emotional landscape and develop healthy coping strategies for life's challenges.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="about-card">
+                        <div class="about-card-body">
+                            <h3>Our Approach</h3>
+                            <p>EmotionAI Journal takes a holistic approach to emotional well-being. We understand that each person's emotional journey is unique, which is why our AI adapts to your specific needs and patterns. Our platform provides:</p>
+                            <ul>
+                                <li>Daily mood tracking and analysis</li>
+                                <li>Personalized insights based on your journaling patterns</li>
+                                <li>Evidence-based coping strategies and exercises</li>
+                                <li>Progress tracking and visualization</li>
+                                <li>Complete privacy and data security</li>
+                            </ul>
+                            <p>We're not just a journaling app – we're your emotional wellness companion, helping you navigate life's ups and downs with greater awareness and resilience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Info Section -->
+    <section class="contact-info" id="contact">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-5 fw-bold">Get In Touch</h2>
+                <p class="lead">We'd love to hear from you! Reach out to us through any of the following channels.</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="contact-card text-center p-4">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4>Email Us</h4>
+                        <p>support@emotionaijournal.com</p>
+                        <p>info@emotionaijournal.com</p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="contact-card text-center p-4">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+                        <h4>Call Us</h4>
+                        <p>+91 9891234567</p>
+                        <p>Mon-Fri, 9am-5pm </p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="contact-card text-center p-4">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4>Visit Us</h4>
+                        <p>123 Wellness Street</p>
+                        <p>Tech Valley, CBE </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="card shadow-lg">
+                        <div class="card-body p-5">
+                            <h3 class="mb-4">Send Us a Message</h3>
+                            <form>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <input type="text" class="form-control" placeholder="Your Name">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="email" class="form-control" placeholder="Your Email">
+                                    </div>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Subject">
+                                <textarea class="form-control" rows="5" placeholder="Your Message"></textarea>
+                                <button type="submit" class="btn btn-primary mt-3">Send Message</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>EmotionAI Journal</h4>
+                    <p>Empowering Your Emotional Well-being with AI</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="text-center">
+                <p>&copy; 2025 EmotionAI Journal. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
