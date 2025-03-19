@@ -1,0 +1,680 @@
+:root {
+    --light-pink: #FFB8B8;
+    --medium-pink: #F59397;
+    --cream: #FDEFE7;
+    --dark-text: #333333;
+    --light-text: #666666;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--cream);
+    color: var(--dark-text);
+    overflow-x: hidden;
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: white;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 15px 0;
+}
+
+.navbar-brand {
+    font-weight: 700;
+    color: var(--medium-pink) !important;
+    font-size: 1.5rem;
+}
+
+.nav-link {
+    color: var(--dark-text) !important;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 15px;
+    border-radius: 20px;
+    margin: 0 5px;
+}
+
+.nav-link:hover {
+    color: var(--medium-pink) !important;
+    background-color: rgba(255, 184, 184, 0.1);
+}
+
+.nav-link.active {
+    background-color: rgba(255, 184, 184, 0.2);
+    color: var(--medium-pink) !important;
+}
+
+/* Button Styles */
+.btn-primary {
+    background-color: var(--medium-pink);
+    border-color: var(--medium-pink);
+    box-shadow: 0 4px 6px rgba(245, 147, 151, 0.2);
+    transition: all 0.3s ease;
+    border-radius: 25px;
+    padding: 8px 20px;
+}
+
+.btn-primary:hover {
+    background-color: #e27f83;
+    border-color: #e27f83;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(245, 147, 151, 0.3);
+}
+
+.btn-outline-primary {
+    color: var(--medium-pink);
+    border-color: var(--medium-pink);
+    border-radius: 25px;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--medium-pink);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Hero Section */
+.hero-section {
+    position: relative;
+    background: linear-gradient(135deg, var(--light-pink) 0%, var(--medium-pink) 100%);
+    padding: 100px 0 150px;
+    overflow: hidden;
+}
+
+.hero-text {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hero-text h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+}
+
+.wave-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    line-height: 0;
+}
+
+/* Floating Emojis */
+.floating-emojis {
+    position: relative;
+    height: 300px;
+}
+
+.emoji-bubble {
+    position: absolute;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    animation: float 6s ease-in-out infinite;
+}
+
+.emoji-happy {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.emoji-sad {
+    top: 50%;
+    left: 20%;
+    animation-delay: 1s;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.emoji-angry {
+    top: 30%;
+    left: 50%;
+    animation-delay: 2s;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.emoji-anxious {
+    top: 60%;
+    left: 60%;
+    animation-delay: 1.5s;
+    background-color: rgba(255, 255, 255, 0.75);
+}
+
+.emoji-calm {
+    top: 10%;
+    right: 10%;
+    animation-delay: 2.5s;
+    background-color: rgba(255, 255, 255, 0.85);
+}
+
+.emoji-love {
+    top: 40%;
+    right: 15%;
+    animation-delay: 0.5s;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Animation for floating elements */
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(5deg);
+    }
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+.delay-1 {
+    animation-delay: 0.5s;
+}
+
+.delay-2 {
+    animation-delay: 1s;
+}
+
+.delay-3 {
+    animation-delay: 1.5s;
+}
+
+/* Feature Section */
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+}
+
+.feature-item {
+    background-color: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    padding: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.feature-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.feature-content {
+    padding: 20px;
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+    background-color: rgba(255, 184, 184, 0.2);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 20px;
+    color: var(--medium-pink);
+    font-size: 1.8rem;
+}
+
+/* Shape variants for feature items */
+.hexagon {
+    clip-path: polygon(10% 0, 90% 0, 100% 50%, 90% 100%, 10% 100%, 0% 50%);
+}
+
+.circle {
+    border-radius: 50%;
+}
+
+.triangle {
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.rectangle {
+    border-radius: 10px;
+}
+
+.diamond {
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+}
+
+.pentagon {
+    clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
+}
+
+/* Emotional Words Section */
+.emotion-words-section {
+    background-color: white;
+    padding: 60px 0;
+}
+
+.emotion-words-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.emotion-word {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 25px;
+    font-weight: 500;
+    animation: pulse 3s infinite;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.emotion-word:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+/* Colors for different emotions */
+.joy {
+    background-color: #FFEBB0;
+    color: #FF8A00;
+}
+
+.sadness {
+    background-color: #B6E0FE;
+    color: #0069BC;
+}
+
+.anger {
+    background-color: #FFD2CF;
+    color: #D93400;
+}
+
+.fear {
+    background-color: #E0D5FF;
+    color: #5921CF;
+}
+
+.surprise {
+    background-color: #C7F9CC;
+    color: #1B7B2C;
+}
+
+.disgust {
+    background-color: #D8F8E1;
+    color: #148F50;
+}
+
+.love {
+    background-color: #FFCBE5;
+    color: #D81B60;
+}
+
+.excitement {
+    background-color: #FFE0B7;
+    color: #E65100;
+}
+
+.anxiety {
+    background-color: #D7CCC8;
+    color: #4E342E;
+}
+
+.peace {
+    background-color: #BBDEFB;
+    color: #1976D2;
+}
+
+.hope {
+    background-color: #FFF9C4;
+    color: #F57F17;
+}
+
+.frustration {
+    background-color: #FFCCBC;
+    color: #BF360C;
+}
+
+.gratitude {
+    background-color: #C8E6C9;
+    color: #2E7D32;
+}
+
+.guilt {
+    background-color: #CFD8DC;
+    color: #455A64;
+}
+
+.pride {
+    background-color: #FFE0B2;
+    color: #E65100;
+}
+
+.shame {
+    background-color: #F5F5F5;
+    color: #616161;
+}
+
+.curiosity {
+    background-color: #E1F5FE;
+    color: #0288D1;
+}
+
+.confusion {
+    background-color: #E0E0E0;
+    color: #424242;
+}
+
+.awe {
+    background-color: #D1C4E9;
+    color: #512DA8;
+}
+
+.trust {
+    background-color: #C5CAE9;
+    color: #303F9F;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* How It Works Section */
+.journey-path {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.journey-step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+    position: relative;
+    z-index: 2;
+}
+
+.step-number {
+    width: 50px;
+    height: 50px;
+    background-color: var(--medium-pink);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 20px;
+    box-shadow: 0 5px 10px rgba(245, 147, 151, 0.3);
+}
+
+.step-content {
+    flex: 1;
+}
+
+.step-icon {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 184, 184, 0.2);
+    color: var(--medium-pink);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.8rem;
+    margin-left: 20px;
+}
+
+.journey-connector {
+    position: relative;
+    height: 40px;
+    z-index: 1;
+}
+
+.journey-connector::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    left: 25px;
+    height: 80px;
+    width: 4px;
+    background-color: var(--medium-pink);
+    z-index: 1;
+}
+
+/* About & Contact Section */
+.about-contact-section {
+    background-color: white;
+    padding: 60px 0;
+}
+
+.about-card, .contact-card {
+    background-color: var(--cream);
+    border-radius: 15px;
+    padding: 30px;
+    height: 100%;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.about-card:hover, .contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+}
+
+.about-badges {
+    margin-top: 20px;
+}
+
+.about-badges .badge {
+    background-color: var(--medium-pink);
+    color: white;
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding: 8px 15px;
+    font-weight: 500;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, var(--medium-pink) 0%, #e27f83 100%);
+    color: white;
+    padding: 60px 0 30px;
+}
+
+.footer h5 {
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.footer a:hover {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: underline;
+}
+
+.social-icons a {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+/* Login/Signup Modal */
+.login-modal .modal-content {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.login-modal .modal-header {
+    border-bottom: none;
+    padding: 20px 30px 0;
+}
+
+.login-modal .modal-body {
+    padding: 20px 30px 30px;
+}
+
+.login-modal .form-control {
+    border-radius: 10px;
+    padding: 12px 15px;
+    border: 1px solid #e6e6e6;
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+    position: relative;
+    cursor: pointer;
+}
+
+.avatar-circle {
+    width: 40px;
+    height: 40px;
+    background-color: var(--medium-pink);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(245, 147, 151, 0.3);
+    cursor: pointer;
+}
+
+.profile-menu {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    padding: 10px 0;
+    display: none;
+    z-index: 1000;
+}
+
+.profile-dropdown:hover .profile-menu {
+    display: block;
+}
+
+.profile-menu a {
+    display: block;
+    padding: 12px 20px;
+    color: var(--dark-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.profile-menu a:hover {
+    background-color: rgba(255, 184, 184, 0.1);
+    color: var(--medium-pink);
+}
+
+/* Journal Modal */
+#journalModal .modal-content {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.emotion-bubble.selected {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 3px var(--medium-pink);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .hero-text h1 {
+        font-size: 2.5rem;
+    }
+    
+    .feature-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 0 120px;
+    }
+    
+    .journey-step {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .step-number {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .step-icon {
+        margin-left: 0;
+        margin-top: 15px;
+    }
+    
+    .journey-connector::before {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+
+@media (max-width: 576px) {
+    .emotion-words-cloud {
+        justify-content: center;
+    }
+    
+    .emotion-word {
+        font-size: 0.9rem;
+        margin: 5px;
+        padding: 8px 15px;
+    }
+}
