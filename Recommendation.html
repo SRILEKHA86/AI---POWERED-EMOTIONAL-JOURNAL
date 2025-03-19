@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodMind | AI Recommendations</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FFB6C1;
+            --secondary: #8b5cf6;
+            --accent: #d946ef;
+            --light: #f3f4f6;
+            --dark: #1f2937;
+        }
+        
+        body {
+            font-family: 'Dancing Script', cursive;
+            background-color: #f8f9fa;
+            color: var(--dark);
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            color: white !important;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.85) !important;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .hero-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, #e0f2fe, #dbeafe);
+            border-radius: 0 0 25% 25% / 30px;
+        }
+        
+        h1 {
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+        
+        .hero-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(99, 102, 241, 0.6);
+        }
+        
+        .card {
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: none;
+            margin-bottom: 30px;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            font-weight: 600;
+            text-align: center;
+            padding: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .card-body {
+            padding: 30px;
+        }
+        
+        .activity-icon {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover .activity-icon {
+            transform: scale(1.2);
+            color: var(--accent);
+        }
+        
+        .progress-section {
+            background-color: white;
+            padding: 80px 0;
+            border-radius: 30px;
+            margin-top: 50px;
+        }
+        
+        .progress-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .progress {
+            height: 12px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            background-color: #e9ecef;
+        }
+        
+        .progress-bar {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+        }
+        
+        .mood-indicator {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 40px;
+        }
+        
+        .mood-item {
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+        
+        .mood-item.active {
+            transform: scale(1.2);
+        }
+        
+        .mood-emoji {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .mood-emoji:hover {
+            transform: scale(1.2);
+        }
+        
+        .mood-label {
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+        
+        footer {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 100px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            margin: 0 15px;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .activity-tracker {
+            background-color: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .day-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .day-circle.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+        
+        .day-circle:hover {
+            transform: translateY(-3px);
+        }
+        
+        .banner {
+            background: linear-gradient(135deg, #FFB6C1, #d946ef);
+            padding: 30px;
+            border-radius: 16px;
+            color: white;
+            margin-bottom: 40px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+        
+        .banner h2 {
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .activity-complete {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #10b981;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .activity-card {
+            position: relative;
+        }
+        
+        .activity-card.completed .activity-complete {
+            opacity: 1;
+        }
+        
+        .activity-card.completed .card-header {
+            background: linear-gradient(135deg, #10b981, #059669);
+        }
+        
+        .progress-circular {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+        }
+        
+        .circle-bg {
+            fill: none;
+            stroke: #e9ecef;
+            stroke-width: 10;
+        }
+        
+        .circle {
+            fill: none;
+            stroke: var(--primary);
+            stroke-width: 10;
+            stroke-linecap: round;
+            transform: rotate(-90deg);
+            transform-origin: 50% 50%;
+            transition: all 1s ease;
+        }
+        
+        .percentage {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark py-3 sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-brain me-2"></i>
+                MoodMind
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:5500/home.html"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:5500/journal.html"><i class="fas fa-book me-1"></i> Journal</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#"><i class="fas fa-lightbulb me-1"></i> Recommendations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-chart-line me-1"></i> Insights</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="http://127.0.0.1:5500/aboutus.html#"><i class="fas fa-info-circle me-1"></i> About</a>
+                    </li>
+                </ul>
+                <button class="btn btn-light ms-3 rounded-pill px-4">
+                    <i class="fas fa-user me-1"></i> Profile
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 data-aos="fade-up">AI-Powered Mood Recommendations</h1>
+            <p class="hero-text text-muted" data-aos="fade-up" data-aos-delay="100">
+                Based on your journal entries, we've analyzed your emotional patterns and created personalized recommendations to help improve your well-being.
+            </p>
+            
+            <div class="mood-indicator" data-aos="fade-up" data-aos-delay="200">
+                <div class="mood-item">
+                    <div class="mood-emoji">😢</div>
+                    <div class="mood-label">Sad</div>
+                </div>
+                <div class="mood-item">
+                    <div class="mood-emoji">😟</div>
+                    <div class="mood-label">Worried</div>
+                </div>
+                <div class="mood-item active">
+                    <div class="mood-emoji">😐</div>
+                    <div class="mood-label">Neutral</div>
+                </div>
+                <div class="mood-item">
+                    <div class="mood-emoji">🙂</div>
+                    <div class="mood-label">Happy</div>
+                </div>
+                <div class="mood-item">
+                    <div class="mood-emoji">😄</div>
+                    <div class="mood-label">Joyful</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <section class="py-5">
+        <div class="container">
+            <div class="banner" data-aos="zoom-in">
+                <h2><i class="fas fa-lightbulb me-2"></i> Your Personalized Plan</h2>
+                <p class="mb-0">We've noticed you've been feeling down lately. Here are some activities that can help boost your mood and energy levels.</p>
+            </div>
+            
+            <div class="row">
+                <!-- Weekly Progress Tracker -->
+                <div class="col-lg-12 mb-5" data-aos="fade-up">
+                    <div class="activity-tracker">
+                        <h3 class="mb-4">Your Activity Progress</h3>
+                        <div class="progress-circular mb-4">
+                            <svg viewBox="0 0 120 120">
+                                <circle class="circle-bg" cx="60" cy="60" r="54"/>
+                                <circle class="circle" cx="60" cy="60" r="54" stroke-dasharray="339.3" stroke-dashoffset="169.65"/>
+                            </svg>
+                            <div class="percentage">50%</div>
+                        </div>
+                        <p class="text-center mb-4">Great progress! Keep going with your activities to see improvements.</p>
+                        <div class="d-flex justify-content-between mb-4">
+                            <div class="day-circle">M</div>
+                            <div class="day-circle active">T</div>
+                            <div class="day-circle active">W</div>
+                            <div class="day-circle">T</div>
+                            <div class="day-circle">F</div>
+                            <div class="day-circle">S</div>
+                            <div class="day-circle">S</div>
+                        </div>
+                        <div class="progress mb-4">
+                            <div class="progress-bar" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Activity Cards -->
+                <div class="col-md-6 col-lg-4" data-aos="fade-up">
+                    <div class="card activity-card completed mb-4">
+                        <div class="activity-complete">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="card-header">
+                            Morning Meditation
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="activity-icon">
+                                <i class="fas fa-spa"></i>
+                            </div>
+                            <h5 class="card-title">10-Minute Guided Meditation</h5>
+                            <p class="card-text">Start your day with a calm mind and positive intentions.</p>
+                            <p class="text-muted small mb-3">Recommended for: Anxiety, Stress, Sadness</p>
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-play me-2"></i> Start Now
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card activity-card mb-4">
+                        <div class="activity-complete">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="card-header">
+                            Social Connection
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="activity-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h5 class="card-title">Reach Out to a Friend</h5>
+                            <p class="card-text">Social connections can significantly improve mood and well-being.</p>
+                            <p class="text-muted small mb-3">Recommended for: Loneliness, Sadness</p>
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-check-circle me-2"></i> Mark Complete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card activity-card mb-4">
+                        <div class="activity-complete">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="card-header">
+                            Physical Exercise
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="activity-icon">
+                                <i class="fas fa-running"></i>
+                            </div>
+                            <h5 class="card-title">30-Minute Cardio Workout</h5>
+                            <p class="card-text">Exercise releases endorphins that naturally boost your mood.</p>
+                            <p class="text-muted small mb-3">Recommended for: Low Energy, Sadness</p>
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-check-circle me-2"></i> Mark Complete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card activity-card mb-4">
+                        <div class="activity-complete">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="card-header">
+                            Nature Walk
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="activity-icon">
+                                <i class="fas fa-tree"></i>
+                            </div>
+                            <h5 class="card-title">Mindful Outdoor Walk</h5>
+                            <p class="card-text">Spending time in nature can reduce stress and improve mood.</p>
+                            <p class="text-muted small mb-3">Recommended for: Anxiety, Overwhelm</p>
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-check-circle me-2"></i> Mark Complete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card activity-card mb-4">
+                        <div class="activity-complete">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="card-header">
+                            Gratitude Practice
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="activity-icon">
+                                <i class="fas fa-heart"></i>
+                            </div>
+                            <h5 class="card-title">Daily Gratitude Journal</h5>
+                            <p class="card-text">Write down three things you're grateful for each day.</p>
+                            <p class="text-muted small mb-3">Recommended for: Negative Thoughts, Sadness</p>
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-check-circle me-2"></i> Mark Complete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card activity-card mb-4">
+                        <div class="activity-complete">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="card-header">
+                            Creative Expression
+                        </div>
+                        <div class="card-body text-center">
+                            <div class="activity-icon">
+                                <i class="fas fa-paint-brush"></i>
+                            </div>
+                            <h5 class="card-title">Art Therapy Session</h5>
+                            <p class="card-text">Express emotions through drawing, painting, or other art forms.</p>
+                            <p class="text-muted small mb-3">Recommended for: Emotional Processing</p>
+                            <button class="btn btn-primary w-100">
+                                <i class="fas fa-check-circle me-2"></i> Mark Complete
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Progress Section -->
+            <div class="progress-section mt-5" data-aos="fade-up">
+                <div class="container">
+                    <h2 class="text-center mb-5">Your Emotional Progress</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="progress-title">Mood Improvement</div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            
+                            <div class="progress-title">Energy Levels</div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 45%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="progress-title">Anxiety Reduction</div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                            
+                            <div class="progress-title">Overall Well-being</div>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2025 MoodMind - AI Powered Emotional Journal</p>
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script>
+        // Initialize AOS animation
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true
+        });
+        
+        // Mark activity as complete when clicked
+        document.querySelectorAll('.btn-primary').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const card = this.closest('.activity-card');
+                card.classList.toggle('completed');
+                
+                if (card.classList.contains('completed')) {
+                    this.innerHTML = '<i class="fas fa-check-circle me-2"></i> Completed';
+                } else {
+                    this.innerHTML = '<i class="fas fa-check-circle me-2"></i> Mark Complete';
+                }
+                
+                // Update progress
+                updateProgress();
+            });
+        });
+        
+        // Update mood when clicked
+        document.querySelectorAll('.mood-emoji').forEach(emoji => {
+            emoji.addEventListener('click', function() {
+                document.querySelectorAll('.mood-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                this.parentElement.classList.add('active');
+            });
+        });
+        
+        // Update progress function
+        function updateProgress() {
+            const totalActivities = document.querySelectorAll('.activity-card').length;
+            const completedActivities = document.querySelectorAll('.activity-card.completed').length;
+            const progressPercentage = (completedActivities / totalActivities) * 100;
+            
+            // Update circular progress
+            const circumference = 2 * Math.PI * 54;
+            const offset = circumference - (progressPercentage / 100) * circumference;
+            document.querySelector('.circle').style.strokeDashoffset = offset;
+            document.querySelector('.percentage').textContent = Math.round(progressPercentage) + '%';
+            
+            // Update progress bar
+            document.querySelector('.progress-bar').style.width = progressPercentage + '%';
+        }
+        
+        // Initialize progress
+        updateProgress();
+        
+        // Day circles functionality
+        document.querySelectorAll('.day-circle').forEach(day => {
+            day.addEventListener('click', function() {
+                this.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
