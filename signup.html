@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - AI Powered Emotional Journal</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --primary: #FFB6C1;
+            --primary-light: #9F8EF8;
+            --secondary: #FF69B4;
+            --secondary-light: #FFB6C1;
+            --bg-light: #E6F3FF;
+            --text-dark: #333;
+            --text-light: #fff;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, var(--bg-light) 0%, #fff 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        /* Navigation Styles */
+        .top-nav {
+            background-color: var(--primary);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .nav-item {
+            margin: 0 20px;
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+        .nav-item:hover {
+            transform: translateY(-2px);
+            color: #f0f0f0;
+        }
+        .nav-item i {
+            margin-right: 8px;
+            font-size: 18px;
+        }
+        .profile-button {
+            background-color: white;
+            color: var(--primary);
+            border-radius: 50px;
+            padding: 8px 25px;
+            font-weight: 600;
+            margin-left: 15px;
+            transition: all 0.3s ease;
+        }
+        .profile-button:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+        .light-blue-bar {
+            height: 60px;
+            background-color: var(--bg-light);
+            width: 100%;
+        }
+        
+        /* Signup Section */
+        .signup-section {
+            padding: 50px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 120px);
+        }
+        .signup-container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+        
+        /* Left Side - Information */
+        .signup-info {
+            flex: 1;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            padding: 60px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        .info-content {
+            position: relative;
+            z-index: 2;
+        }
+        .signup-info h2 {
+            font-size: 3rem;
+            margin-bottom: 30px;
+            font-family: 'Dancing Script', cursive;
+        }
+        .signup-info p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 30px 0;
+        }
+        .benefits-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        .benefits-list i {
+            margin-right: 15px;
+            background: rgba(255,255,255,0.2);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .shape-circle {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+        }
+        .circle-1 {
+            width: 300px;
+            height: 300px;
+            bottom: -150px;
+            right: -150px;
+        }
+        .circle-2 {
+            width: 200px;
+            height: 200px;
+            top: -100px;
+            left: -100px;
+        }
+        .emotion-floating {
+            position: absolute;
+            font-size: 2rem;
+            animation: floating 3s infinite ease-in-out;
+        }
+        .emotion-1 {
+            top: 10%;
+            right: 10%;
+            animation-delay: 0.5s;
+        }
+        .emotion-2 {
+            bottom: 20%;
+            right: 20%;
+            animation-delay: 1s;
+        }
+        .emotion-3 {
+            top: 30%;
+            left: 10%;
+            animation-delay: 1.5s;
+        }
+        
+        /* Right Side - Form */
+        .signup-form-container {
+            flex: 1;
+            padding: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .signup-form-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .signup-form-header h3 {
+            color: var(--text-dark);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        .signup-form-header p {
+            color: #666;
+        }
+        .signup-form {
+            max-width: 450px;
+            margin: 0 auto;
+        }
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        .form-control {
+            border: 2px solid #e1e1e1;
+            padding: 15px 15px 15px 45px;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(123, 104, 238, 0.2);
+        }
+        .form-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+        .input-group {
+            display: flex;
+            gap: 10px;
+        }
+        .input-group .form-group {
+            flex: 1;
+        }
+        .password-toggle {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .password-toggle:hover {
+            color: var(--primary);
+        }
+        .btn-signup {
+            width: 100%;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50px;
+            font-weight: 600;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(255, 105, 180, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-signup:hover {
+            background: #ff4da6;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 105, 180, 0.6);
+        }
+        .signup-footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .signup-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        .signup-footer a:hover {
+            color: var(--primary-light);
+        }
+        .social-signup {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .social-signup p {
+            margin-bottom: 15px;
+            color: #666;
+            position: relative;
+        }
+        .social-signup p:before,
+        .social-signup p:after {
+            content: "";
+            position: absolute;
+            height: 1px;
+            width: 30%;
+            background: #e1e1e1;
+            top: 50%;
+        }
+        .social-signup p:before {
+            left: 0;
+        }
+        .social-signup p:after {
+            right: 0;
+        }
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+        .social-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            border: 1px solid #e1e1e1;
+            font-size: 18px;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+        .social-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .social-button.facebook {
+            color: #3b5998;
+        }
+        .social-button.google {
+            color: #db4437;
+        }
+        .social-button.apple {
+            color: #000;
+        }
+        
+        /* Animations */
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, 0px); }
+        }
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* Password Strength */
+        .password-strength {
+            display: flex;
+            margin-top: 10px;
+            gap: 5px;
+        }
+        .strength-bar {
+            height: 5px;
+            flex: 1;
+            background: #e1e1e1;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .strength-text {
+            font-size: 12px;
+            margin-top: 5px;
+            color: #666;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .signup-container {
+                flex-direction: column;
+                max-width: 600px;
+            }
+            .signup-info, .signup-form-container {
+                padding: 40px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .signup-info, .signup-form-container {
+                padding: 30px 20px;
+            }
+            .input-group {
+                flex-direction: column;
+                gap: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="journal.html" class="nav-item">
+                <i class="fas fa-book"></i> Journal
+            </a>
+            <a href="recommendations.html" class="nav-item">
+                <i class="fas fa-lightbulb"></i> Recommendations
+            </a>
+            <a href="insights.html" class="nav-item">
+                <i class="fas fa-chart-line"></i> Insights
+            </a>
+            <a href="about.html" class="nav-item">
+                <i class="fas fa-info-circle"></i> About
+            </a>
+            <a href="profile.html" class="nav-item profile-button">
+                <i class="fas fa-user"></i> Profile
+            </a>
+        </div>
+    </nav>
+    
+    <!-- Light blue bar -->
+    <div class="light-blue-bar"></div>
+
+    <!-- Signup Section -->
+    <section class="signup-section">
+        <div class="container">
+            <div class="signup-container animate__animated animate__fadeIn">
+                <!-- Left Side - Information -->
+                <div class="signup-info">
+                    <div class="shape-circle circle-1"></div>
+                    <div class="shape-circle circle-2"></div>
+                    
+                    <div class="emotion-floating emotion-1">😊</div>
+                    <div class="emotion-floating emotion-2">😍</div>
+                    <div class="emotion-floating emotion-3">🤔</div>
+                    
+                    <div class="info-content animate__animated animate__fadeInLeft">
+                        <h2>Start Your Emotional Journey</h2>
+                        <p>Join thousands of people who use our AI-powered journal to improve their emotional well-being and mental health.</p>
+                        
+                        <ul class="benefits-list">
+                            <li class="animate__animated animate__fadeInLeft animate__delay-1s">
+                                <i class="fas fa-check"></i>
+                                <span>Personalized emotional insights</span>
+                            </li>
+                            <li class="animate__animated animate__fadeInLeft animate__delay-2s">
+                                <i class="fas fa-check"></i>
+                                <span>AI-powered recommendations</span>
+                            </li>
+                            <li class="animate__animated animate__fadeInLeft animate__delay-3s">
+                                <i class="fas fa-check"></i>
+                                <span>Track your emotional journey</span>
+                            </li>
+                            <li class="animate__animated animate__fadeInLeft animate__delay-4s">
+                                <i class="fas fa-check"></i>
+                                <span>100% private and secure</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Right Side - Form -->
+                <div class="signup-form-container">
+                    <div class="signup-form-header animate__animated animate__fadeInRight">
+                        <h3>Create Your Account</h3>
+                        <p>Join us today and start your emotional wellness journey</p>
+                    </div>
+                    
+                    <form class="signup-form animate__animated animate__fadeInRight animate__delay-1s">
+                        <!-- Name Fields -->
+                        <div class="input-group">
+                            <div class="form-group">
+                                <i class="fas fa-user form-icon"></i>
+                                <input type="text" class="form-control" placeholder="First Name" required>
+                            </div>
+                            <div class="form-group">
+                                <i class="fas fa-user form-icon"></i>
+                                <input type="text" class="form-control" placeholder="Last Name" required>
+                            </div>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="form-group">
+                            <i class="fas fa-envelope form-icon"></i>
+                            <input type="email" class="form-control" placeholder="Email Address" required>
+                        </div>
+                        
+                        <!-- Password -->
+                        <div class="form-group">
+                            <i class="fas fa-lock form-icon"></i>
+                            <input type="password" class="form-control" id="password" placeholder="Password" required>
+                            <i class="fas fa-eye password-toggle" id="togglePassword"></i>
+                            
+                            <!-- Password Strength Indicator -->
+                            <div class="password-strength">
+                                <div class="strength-bar" id="bar1"></div>
+                                <div class="strength-bar" id="bar2"></div>
+                                <div class="strength-bar" id="bar3"></div>
+                                <div class="strength-bar" id="bar4"></div>
+                            </div>
+                            <div class="strength-text" id="strengthText">Password strength</div>
+                        </div>
+                        
+                        <!-- Confirm Password -->
+                        <div class="form-group">
+                            <i class="fas fa-lock form-icon"></i>
+                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password" required>
+                            <i class="fas fa-eye password-toggle" id="toggleConfirmPassword"></i>
+                        </div>
+                        
+                        <!-- Birthday -->
+                        <div class="form-group">
+                            <i class="fas fa-calendar form-icon"></i>
+                            <input type="date" class="form-control" placeholder="Birthday" required>
+                        </div>
+                        
+                        <!-- Terms and Conditions -->
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" type="checkbox" id="terms" required>
+                            <label class="form-check-label" for="terms">
+                                I agree to the <a href="terms.html">Terms and Conditions</a> and <a href="privacy.html">Privacy Policy</a>
+                            </label>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <a href="http://127.0.0.1:5500/journal.html" class="btn-signup pulse">Create Account</a>
+                    </form>
+                    
+                    <!-- Social Signup -->
+                    <div class="social-signup animate__animated animate__fadeInRight animate__delay-2s">
+                        <p>Or sign up with</p>
+                        <div class="social-buttons">
+                            <a href="#" class="social-button facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="social-button google">
+                                <i class="fab fa-google"></i>
+                            </a>
+                            <a href="#" class="social-button apple">
+                                <i class="fab fa-apple"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="signup-footer animate__animated animate__fadeInRight animate__delay-3s">
+                        <p>Already have an account? <a href="login.html">Log In</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Password toggle functionality
+            const togglePassword = document.getElementById('togglePassword');
+            const password = document.getElementById('password');
+            
+            togglePassword.addEventListener('click', function() {
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+            
+            const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+            const confirmPassword = document.getElementById('confirmPassword');
+            
+            toggleConfirmPassword.addEventListener('click', function() {
+                const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+                confirmPassword.setAttribute('type', type);
+                this.classList.toggle('fa-eye');
+                this.classList.toggle('fa-eye-slash');
+            });
+            
+            // Password strength indicator
+            const strengthBars = [
+                document.getElementById('bar1'),
+                document.getElementById('bar2'),
+                document.getElementById('bar3'),
+                document.getElementById('bar4')
+            ];
+            const strengthText = document.getElementById('strengthText');
+            
+            password.addEventListener('input', function() {
+                const value = this.value;
+                let strength = 0;
+                
+                if (value.length >= 8) strength++;
+                if (value.match(/[A-Z]/)) strength++;
+                if (value.match(/[0-9]/)) strength++;
+                if (value.match(/[^A-Za-z0-9]/)) strength++;
+                
+                strengthBars.forEach((bar, index) => {
+                    if (index < strength) {
+                        bar.style.background = getStrengthColor(strength);
+                    } else {
+                        bar.style.background = '#e1e1e1';
+                    }
+                });
+                
+                strengthText.textContent = getStrengthText(strength);
+                strengthText.style.color = getStrengthColor(strength);
+            });
+            
+            function getStrengthColor(strength) {
+                switch(strength) {
+                    case 0: return '#e1e1e1';
+                    case 1: return '#f44336';
+                    case 2: return '#ff9800';
+                    case 3: return '#4caf50';
+                    case 4: return '#2196f3';
+                }
+            }
+            
+            function getStrengthText(strength) {
+                switch(strength) {
+                    case 0: return 'Password strength';
+                    case 1: return 'Weak';
+                    case 2: return 'Fair';
+                    case 3: return 'Good';
+                    case 4: return 'Strong';
+                }
+            }
+            
+            // Form input animations
+            const formControls = document.querySelectorAll('.form-control');
+            formControls.forEach(input => {
+                input.addEventListener('focus', function() {
+                    this.parentElement.querySelector('.form-icon').style.color = '#7B68EE';
+                });
+                
+                input.addEventListener('blur', function() {
+                    if (!this.value) {
+                        this.parentElement.querySelector('.form-icon').style.color = '#999';
+                    }
+                });
+            });
+            
+            // Form validation
+            const form = document.querySelector('.signup-form');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                
+                const passwordValue = password.value;
+                const confirmPasswordValue = confirmPassword.value;
+                
+                if (passwordValue !== confirmPasswordValue) {
+                    alert("Passwords don't match");
+                    return;
+                }
+                
+                // Success animation
+                document.querySelector('.btn-signup').innerHTML = '<i class="fas fa-check"></i> Account Created';
+                document.querySelector('.btn-signup').style.background = '#4caf50';
+                
+                // Redirect after 2 seconds
+                setTimeout(() => {
+                    window.location.href = 'journal.html';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
